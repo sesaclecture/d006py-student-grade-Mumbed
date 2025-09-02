@@ -27,7 +27,10 @@ def subject_average(student_scores: dict, subjects: list):
     이 반의 각 과목별 평균을 구해서 딕셔너리로 반환
     예) {"국어": 80.8, "수학": 35.3, "영어": 96.6, "과학": 85.3, "사회": 38.8}
     """
-    pass
+    subject_avg = {}
+    for i, scores in enumerate(zip(*student_scores.values())):
+        subject_avg[subjects[i]] = sum(map(int, scores)) / len(scores)
+    return subject_avg
 
 
 def student_average(student_scores: dict):
@@ -35,7 +38,12 @@ def student_average(student_scores: dict):
     각 학생별 전과목 평균 점수를 정렬된 튜플의 리스트로 반환
     예) [("이영희", 89.8), ("김철수", 86.6), ("박민수", 84.8)]
     """
-    pass
+    student_avg = []
+    for student, score in student_scores.items():
+        avg = sum(map(int, score)) /len(score)
+        student_avg.append((student, avg))
+    return sorted(student_avg, key=lambda x: x[1], reverse=True)
+
 
 
 if __name__ == "__main__":
