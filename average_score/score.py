@@ -27,6 +27,7 @@ def subject_average(student_scores: dict, subjects: list):
     이 반의 각 과목별 평균을 구해서 딕셔너리로 반환
     예) {"국어": 80.8, "수학": 35.3, "영어": 96.6, "과학": 85.3, "사회": 38.8}
     """
+    
     subject_avg = {}
     for i, scores in enumerate(zip(*student_scores.values())):
         subject_avg[subjects[i]] = sum(map(int, scores)) / len(scores)
